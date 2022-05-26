@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react'
 import { searchNews } from './utils/API.js';
+import { format_date, timeSince } from './utils/helpers'
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
             <div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
-              <div>{item.source.name || ''}|{item.publishedAt} </div>
+              <div>{item.source.name || ''}|{format_date(item.publishedAt)} {timeSince(item.publishedAt)} </div>
               <p></p>
             </div>
           </div>          
