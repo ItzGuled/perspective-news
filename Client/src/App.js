@@ -48,7 +48,7 @@ function App() {
           <div className='headline'>
             <img src={item.urlToImage} alt="" width='150px' className='headline-img'></img>
             <div>
-              <h3>{item.title}</h3>
+              <a href={item.url}><h3>{item.title}</h3></a>
               <p>{item.description}</p>
               <div>{item.source.name || ''}|{format_date(item.publishedAt)} {timeSince(item.publishedAt)} </div>
               <p></p>
