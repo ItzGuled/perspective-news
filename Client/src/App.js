@@ -1,21 +1,23 @@
 import './App.css';
 import React, { useState } from 'react'
 import { searchNews } from './utils/API.js';
+import { format_date, timeSince } from './utils/helpers'
 
 function App() {
 
   const [news, updateNews] = useState([])
-  const [searchInput, setSearchInput] = useState('');
+  const [searchString, setSearchString] = useState('');
  
   const handleFormSubmit = async (event) => {
     event.preventDefault()
  
-    if(!searchInput) {
+    if(!searchString) {
       return false;
     };
 
     try {
-      const response =  await searchNews(searchInput)
+      const searchOptions = { searchString }
+      const response =  await searchNews(searchOptions)
       if (!response.ok) { throw new Error('Something went wrong!') }
       const { articles } = await response.json();
       updateNews(articles)
@@ -36,7 +38,7 @@ function App() {
           type="text" 
           name="searchText" 
           id="seartchText" 
-          onChange={e => setSearchInput(e.target.value)}
+          onChange={e => setSearchString(e.target.value)}
           placeholder="Search for news"
           />
         <button onClick={handleFormSubmit}>Search</button>
@@ -47,9 +49,9 @@ function App() {
           <div className='headline'>
             <img src={item.urlToImage} alt="" width='150px' className='headline-img'></img>
             <div>
-              <h3>{item.title}</h3>
+              <a href={item.url}><h3>{item.title}</h3></a>
               <p>{item.description}</p>
-              <div>{item.source.name || ''}|{item.publishedAt} </div>
+              <div>{item.source.name || ''}|{format_date(item.publishedAt)} {timeSince(item.publishedAt)} </div>
               <p></p>
             </div>
           </div>          
