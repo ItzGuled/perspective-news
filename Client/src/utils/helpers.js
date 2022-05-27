@@ -46,7 +46,6 @@ function timeSince(article_date) {
     }   
 };
 
-
 function format_date(article_date) {
     const date = new Date(article_date);
     const year = date.getFullYear();
@@ -54,6 +53,7 @@ function format_date(article_date) {
     const day = date.getDate();
     return `${month}/${day}/${year}`
 }
+
 
 
 module.exports = {timeSince, format_date }
