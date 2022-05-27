@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import { searchNews } from "./utils/API.js";
+import { searchNews, getHeadlines } from "./utils/API.js";
 import { format_date, timeSince } from "./utils/helpers";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -9,6 +9,21 @@ import Nav from "./components/Navbar";
 function App() {
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
+  
+  const topHeadlines = async (event) => {
+    event.preventDefault();
+
+    try {
+      const searchOptions = { };
+      const response = await getHeadlines(searchOptions);
+      if(!response.ok) {
+        throw new Error("Something went wrong!");
+      }
+      const { articles } = await response.json();
+      updateNews(articles);
+    } catch(err) {
+      console.log(err);
+    }
   const [nav] = useState(["Search News", "Your News"]);
 
   const [option, setOption] = useState(nav[0]);
@@ -18,7 +33,10 @@ function App() {
   });
   const navOption = (page) => setOption(page);
 
-  const handleFormSubmit = async (event) => {
+    setSearchString('')
+  }
+  
+  const searchForNews = async (event) => {
     event.preventDefault();
 
     if (!searchString) {
@@ -37,6 +55,9 @@ function App() {
     } catch (err) {
       console.log(err);
     }
+
+    setSearchString('')
+  
   };
 
   return (
@@ -53,10 +74,12 @@ function App() {
           type="text"
           name="searchText"
           id="seartchText"
+          value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
           placeholder="Search for news"
         />
-        <button onClick={handleFormSubmit}>Search</button>
+        <button onClick={searchForNews}>Search</button>
+        <button onClick={topHeadlines}>Headlines</button>
       </form>
 
       {news.map((item, i) => {
