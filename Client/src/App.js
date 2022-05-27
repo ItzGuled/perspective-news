@@ -43,7 +43,7 @@ function App() {
           />
         <button onClick={handleFormSubmit}>Search</button>
       </form>
-           
+
       { news.map((item, i)=> { return (
         <div key={i}>
           <div className='headline'>
@@ -57,7 +57,7 @@ function App() {
           </div>          
         </div>
       )})}
-     
+
       
     </div>
   );
