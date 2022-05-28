@@ -23,6 +23,7 @@ const Search = () => {
         throw new Error("Something went wrong!");
       }
       const { articles } = await response.json();
+      console.log(articles[0].content)
       updateNews(articles);
     } catch (err) {
       console.log(err);

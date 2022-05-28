@@ -1,26 +1,27 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import "../pages/pages.css";
 
 function Nav(props) {
   const { option, setOption, navOption } = props;
 
   return (
-    <nav className="">
-      <ul className="">
+    <nav className="navbar">
+      <ul>
         <li>
           <a
             href="#search"
-            onClick={() => setOption("search")}
-            className={option === "search" ?? "nav-link active"}
+            onClick={() => navOption("search")}
+            className={option === "Search News" ? "nav-link active" : "nav-link"}
           >
             Search News
           </a>
         </li>
         <li>
           <a
-            href="#single"
-            onClick={() => setOption("single")}
-            className={option === "single" ?? "nav-link active"}
+            href="#saved"
+            onClick={() => navOption("saved")}
+            className={option === "Your News" ? "nav-link active" : "nav-link"}
           >
             Your News
           </a>
