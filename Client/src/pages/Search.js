@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { searchNews, getHeadlines } from "../utils/API";
 import { format_date, timeSince } from "../utils/helpers";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/css/bootstrap.min.css";
+import "./pages.css";
 
 const Search = () => {
   
@@ -53,24 +56,26 @@ const Search = () => {
   };
 
   return (
-    <div>
-      <form>
-        <h2>Search for news</h2>
+    <div id="search-div">
+      <form id="search-form">
+        <h2>Search for news</h2> 
+        <section>
         <input
           type="text"
           name="searchText"
-          id="seartchText"
+          id="searchText"
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
-          placeholder="Search for news"
-        />
-        <button onClick={searchForNews}>Search</button>
-        <button onClick={topHeadlines}>Headlines</button>
+          placeholder="...type here to search for news" />
+       
+        <button onClick={searchForNews} type="submit">Search</button>
+        <button onClick={topHeadlines}  type="submit">Headlines</button>
+        </section>
       </form>
-
+ <section id="search-output">
       {news.map((item, i) => {
         return (
-          <div key={i}>
+          <div id="search-output-div" key={i}>
             <div className="headline">
               <img
                 src={item.urlToImage}
@@ -91,8 +96,9 @@ const Search = () => {
               </div>
             </div>
           </div>
+        
         );
-      })}
+      })}  </section>
     </div>
   );
 };
