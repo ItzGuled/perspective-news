@@ -7,7 +7,7 @@ import { format_date, timeSince } from "../utils/helpers";
 import "./pages.css";
 
 const Search = () => {
-  
+
   // State objects for the news articles and search string
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
@@ -77,22 +77,24 @@ const Search = () => {
         return (
           <div id="search-output-div" key={i}>
             <div className="headline">
-              <img
-                src={item.urlToImage}
-                alt=""
-                width="150px"
-                className="headline-img"
-              />
-              <div>
+            <img
+            src={item.urlToImage}
+            alt=""
+            width="150px"
+            className="headline-img"
+          />
+              <div id="search-items">
                 <a href={item.url}>
-                  <h3>{item.title}</h3>
+                  <h3 id="item-title">{item.title}</h3>
                 </a>
-                <p>{item.description}</p>
-                <div>
+                <p id="item-description">{item.description}</p>
+                <div id="item-source">
                   {item.source.name || ""}|{format_date(item.publishedAt)}{" "}
                   {timeSince(item.publishedAt)}{" "}
                 </div>
-                <p></p>
+                <p id="button-wrapper">
+                <button id="save-search">Save</button>
+                </p>
               </div>
             </div>
           </div>

@@ -20,12 +20,14 @@ function App() {
   return (
     <div>
       <Header />
+      <main>
       <Nav navOption={navOption} option={option} setOption={setOption}>
         option={option}
       </Nav>
       {option === "Search News" && <Search />}
       {option === "Your News" && <single />}
       <Footer />
+      </main>
     </div>
   );
 }
