@@ -33,7 +33,15 @@ export const SAVE_NEWS = gql`
       username
       email
       savedNews {
-        
+        sourceID
+        sourceName
+        author
+        title
+        description
+        url
+        image
+        publishedAt
+        content
       }
     }
   }
@@ -46,7 +54,15 @@ export const REMOVE_NEWS = gql`
       username
       email
       savedNews {
-
+        sourceID
+        sourceName
+        author
+        title
+        description
+        url
+        image
+        publishedAt
+        content
       }
     }
   }

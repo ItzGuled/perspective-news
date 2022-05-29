@@ -1,0 +1,37 @@
+.header {
+  height: 92px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(270deg, #3d44d9, #435ad9);
+}
+.header > p {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: aquamarine;
+  background-image: linear-gradient(60deg, #435ad9, aquamarine);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+h1 {
+  color: aquamarine;
+  margin-left: 0.5em;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.AMQ-Traders-1-hex {
+  color: #3d44d9;
+}
+.AMQ-Traders-2-hex {
+  color: #435ad9;
+}
+.AMQ-Traders-3-hex {
+  color: #3b5cbf;
+}
+.AMQ-Traders-4-hex {
+  color: #3f9bbf;
+}
+.AMQ-Traders-5-hex {
+  color: #37a6a6;
+}
