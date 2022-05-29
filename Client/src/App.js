@@ -4,13 +4,11 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Nav from "./components/Navbar";
 import Search from "./pages/Search";
+import Saved from "./pages/Saved";
 
 function App() {
 
-  const [nav] = useState(["Search News", "Your News"]);
-  const [option, setOption] = useState(nav[0]);
-
-  const navOption = (page) => setOption(page);
+  const [option, setOption] = useState("Search News");
 
   useEffect(() => {
     document.title = `perspective - ${option}`;
@@ -21,12 +19,10 @@ function App() {
     <div>
       <Header />
       <main>
-      <Nav navOption={navOption} option={option} setOption={setOption}>
-        option={option}
-      </Nav>
-      {option === "Search News" && <Search />}
-      {option === "Your News" && <single />}
-      <Footer />
+        <Nav option={option} setOption={setOption} />
+        {option === "Search News" && <Search />}
+        {option === "Your News" && <Saved />}
+        <Footer />
       </main>
     </div>
   );
