@@ -5,6 +5,11 @@
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(270deg, #3d44d9, #435ad9);
+  position: fixed;
+  z-index: 999;
+  right: 0;
+  left: 0;
+  top: 0;
 }
 .header > p {
   width: 60px;
