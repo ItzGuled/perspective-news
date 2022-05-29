@@ -67,7 +67,7 @@ const Search = () => {
           id="searchText"
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
-          placeholder="...type here to search for news" />
+          placeholder="Search Perspective..." />
        
         <button onClick={searchForNews} type="submit">Search</button>
         <button onClick={topHeadlines}  type="submit">Headlines</button>
