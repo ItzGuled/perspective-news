@@ -86,6 +86,12 @@
 #search-output-div {
   border-radius: 2em;
 }
+
+#search-output img {
+  object-fit: cover;
+  width: 400px;
+  height: 330px;
+}
 p#button-wrapper {
   width: 100%;
   display: flex;
