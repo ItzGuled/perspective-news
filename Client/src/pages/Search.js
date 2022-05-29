@@ -59,7 +59,7 @@ const Search = () => {
   return (
     <div id="search-div">
       <form id="search-form">
-        <h2>Search for news</h2> 
+        <h2>Search for News</h2> 
         <section>
         <input
           type="text"

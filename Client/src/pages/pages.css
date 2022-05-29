@@ -43,6 +43,11 @@
     justify-content: center;
 }
 
+#search-div h2 {
+ color:   #3D44D9;
+ 
+}
+
 #search-output {
     display: grid;
     grid-template-columns: repeat(3, 33%);
