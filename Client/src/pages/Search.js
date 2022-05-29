@@ -59,7 +59,7 @@ const Search = () => {
   return (
     <div id="search-div">
       <form id="search-form">
-        <h2>Search for news</h2> 
+        <h2>Search for News</h2> 
         <section>
         <input
           type="text"
@@ -67,7 +67,7 @@ const Search = () => {
           id="searchText"
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
-          placeholder="...type here to search for news" />
+          placeholder="Search Perspective..." />
        
         <button onClick={searchForNews} type="submit">Search</button>
         <button onClick={topHeadlines}  type="submit">Headlines</button>
