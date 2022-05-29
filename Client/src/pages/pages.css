@@ -145,6 +145,12 @@ button#save-search:hover {
     
 }
 
+.navbar ul{
+    display: flex!important;
+    justify-content: space-around;
+    flex-basis: auto;
+  }
+
 .nav-link {
     margin: 10px;
     text-decoration: none;
