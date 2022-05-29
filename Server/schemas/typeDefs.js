@@ -1,5 +1,9 @@
 const { gql } = require('apollo-server-express');
-
+// Do we need a remove typeDef below?
+//   type removeNews {
+//    Id: User
+//    maybe sourceName instead of Id?
+//  }
 const typeDefs = gql`
     type News {
         _id: ID
@@ -20,6 +24,7 @@ const typeDefs = gql`
         newsCount: Int
         savedNews: [News]
     }
+
     type Auth {
         token: ID!
         user: User
