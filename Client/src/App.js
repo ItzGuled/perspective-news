@@ -8,14 +8,8 @@ import Saved from "./pages/Saved";
 
 function App() {
 
-  const [nav] = useState(["Search News", "Your News", "Login", "Logout"]);
-  
-  const [option, setOption] = useState(nav[0]);
+  const [option, setOption] = useState("Search News");
 
-  const navOption = (page) => {
-    page === 'saved' ? setOption(nav[1]) : setOption(nav[0])
-  }
- 
   useEffect(() => {
     document.title = `perspective - ${option}`;
   });
@@ -25,12 +19,10 @@ function App() {
     <div>
       <Header />
       <main>
-      <Nav navOption={navOption} option={option} setOption={setOption}>
-        option={option}
-      </Nav>
-      {option === "Search News" && <Search />}
-      {option === "Your News" && <Saved />}
-      <Footer />
+        <Nav option={option} setOption={setOption} />
+        {option === "Search News" && <Search />}
+        {option === "Your News" && <Saved />}
+        <Footer />
       </main>
     </div>
   );

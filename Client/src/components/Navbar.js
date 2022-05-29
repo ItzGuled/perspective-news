@@ -3,7 +3,7 @@ import React from "react";
 import "../pages/pages.css";
 
 function Nav(props) {
-  const { option, setOption, navOption } = props;
+  const { option, setOption } = props;
 
   return (
     <nav className="navbar">
@@ -11,7 +11,7 @@ function Nav(props) {
         <li>
           <a
             href="#search"
-            onClick={() => navOption("search")}
+            onClick={() => setOption("Search News")}
             className={option === "Search News" ? "nav-link active" : "nav-link"}
           >
             Search News
@@ -20,7 +20,7 @@ function Nav(props) {
         <li>
           <a
             href="#saved"
-            onClick={() => navOption("saved")}
+            onClick={() => setOption("Your News")}
             className={option === "Your News" ? "nav-link active" : "nav-link"}
           >
             Your News
