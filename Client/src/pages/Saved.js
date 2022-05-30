@@ -12,6 +12,7 @@ import Auth from "../utils/auth";
 import { removeNewsId, saveNewsIds } from "../utils/localStorage";
 import { GET_ME } from "../utils/queries";
 import { REMOVE_NEWS } from "../utils/mutations";
+import NewsList from "../components/NewsList";
 
 const SavedNews = () => {
   const { loading, data } = useQuery(GET_ME);
@@ -49,7 +50,12 @@ const SavedNews = () => {
   const savedNewsIds = userData.savedNews.map((news) => news.newsId);
   // saveNewsIds(savedNewsIds);
 
-  return <h1>Viewing saved news!</h1>;
+  return (
+    <div>
+    <h1>Viewing saved news!</h1>
+    <NewsList news={data.me.savedNews} handleDeleteNews={handleDeleteNews} />
+    </div>
+  );
 };
 
 export default SavedNews;

@@ -3,8 +3,8 @@ import Auth from "../../utils/auth";
 import { format_date, timeSince } from "../../utils/helpers";
 
 
-const NewsList = ({news}) => {
-
+const NewsList = ({news, handleDeleteNews, handleSaveNews}) => {
+    
 
 
     return(
@@ -27,19 +27,15 @@ const NewsList = ({news}) => {
                         <div id="item-source">
                         {item.source.name || ""}|{format_date(item.publishedAt)}{" "}
                         {timeSince(item.publishedAt)}{" "}
-                        </div>
-                        <p id="button-wrapper">
-                        <button id="save-search">Save</button>
-                        </p>
+                        </div>                        
                     </div>
                     </div>
                     {Auth.loggedIn() && (
-                    <p id="button-wrapper">
-                    <button id="save-search">Save</button>
+                    <p id="button-wrapper">                        
+                    <button data-testid={item._id? item._id : ''} id="save-search" onClick={item._id? handleDeleteNews(item._id) : handleSaveNews(item)}>{item._id? 'Delete' : 'Save'}</button>
                     </p>
                     )}
-                </div>
-                
+                </div>                
                 );
             })}  
         </section>
