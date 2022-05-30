@@ -47,7 +47,7 @@ const SavedNews = () => {
   }
 
   const savedNewsIds = userData.savedNews.map((news) => news.newsId);
-  saveNewsIds(savedNewsIds);
+  // saveNewsIds(savedNewsIds);
 
   return <h1>Viewing saved news!</h1>;
 };

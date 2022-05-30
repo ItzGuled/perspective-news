@@ -73,7 +73,7 @@ const LoginForm = (props) => {
         value={ userFormData.email }
         />
       <input
-        type="text"
+        type="password"
         name="password"
         placeholder="password"
         onChange={handleInputChange}
@@ -89,7 +89,7 @@ const LoginForm = (props) => {
         onClick={() => setNewUser(false)}
         >
           Login
-        </button>
+      </button>      
     </div>
   );
 };
