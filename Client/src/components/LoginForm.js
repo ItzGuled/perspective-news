@@ -9,7 +9,7 @@ const LoginForm = () => {
   // const [showAlert, setShowAlert] = useState(false);
 
   // use mutation for login route
-  // const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [loginUser, { error }] = useMutation(LOGIN_USER);
   
   
   const handleInputChange = (event) => {
@@ -22,32 +22,32 @@ const LoginForm = () => {
 
     event.preventDefault();
 
-    // try {
+    try {
 
-    //   const { data } = await loginUser({
-    //     variables: { ...userFormData },
-    //   });
+      const { data } = await loginUser({
+        variables: { ...userFormData },
+      });
 
-    //   if (error) {
-    //     throw new Error('something went wrong!');
-    //   }
+      if (error) {
+        throw new Error('something went wrong!');
+      }
 
-    //   Auth.login(data.login.token);
+      Auth.login(data.login.token);
 
-    // } catch (err) {
-    //   console.error(`
-    //   ===========================
-    //   ERROR
-    //   ===========================
-    //   ${err}
-    //   `);
+    } catch (err) {
+      console.error(`
+      ===========================
+      ERROR
+      ===========================
+      ${err}
+      `);
 
-    //   // setShowAlert(true);
-    // }
+      // setShowAlert(true);
+    }
 
     setUserFormData({
-      username: '',
       email: '',
+      password: '',
     });
   };
 
@@ -59,12 +59,14 @@ const LoginForm = () => {
   return (
     <div>
       <input
+        type="text"
         name="email" 
         placeholder="email"
         onChange={handleInputChange}
         value={ userFormData.email }
         />
       <input
+        type="text"
         name="password"
         placeholder="password"
         onChange={handleInputChange}
