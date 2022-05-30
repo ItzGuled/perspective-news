@@ -99,7 +99,7 @@ const Search = () => {
         <button onClick={topHeadlines}  type="submit">Headlines</button>
         </section>
       </form>
-      <NewsList news={news} handleSaveNews={handleSaveNews}/>      
+      <NewsList news={news} handleDeleteNews={''} handleSaveNews={handleSaveNews}/>      
     </div>
   );
 };
