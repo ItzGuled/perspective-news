@@ -68,40 +68,41 @@ const Search = () => {
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
           placeholder="Search Perspective..." />
-       
+
         <button onClick={searchForNews} type="submit">Search</button>
         <button onClick={topHeadlines}  type="submit">Headlines</button>
         </section>
       </form>
- <section id="search-output">
-      {news.map((item, i) => {
-        return (
-          <div id="search-output-div" key={i}>
-            <div className="headline">
-            <img
-            src={item.urlToImage}
-            alt=""
-            width="150px"
-            className="headline-img"
-          />
-              <div id="search-items">
-                <a href={item.url}>
-                  <h3 id="item-title">{item.title}</h3>
-                </a>
-                <p id="item-description">{item.description}</p>
-                <div id="item-source">
-                  {item.source.name || ""}|{format_date(item.publishedAt)}{" "}
-                  {timeSince(item.publishedAt)}{" "}
+      <section id="search-output">
+          {news.map((item, i) => {
+            return (
+              <div id="search-output-div" key={i}>
+                <div className="headline">
+                <img
+                src={item.urlToImage}
+                alt=""
+                width="150px"
+                className="headline-img"
+              />
+                  <div id="search-items">
+                    <a href={item.url}>
+                      <h3 id="item-title">{item.title}</h3>
+                    </a>
+                    <p id="item-description">{item.description}</p>
+                    <div id="item-source">
+                      {item.source.name || ""}|{format_date(item.publishedAt)}{" "}
+                      {timeSince(item.publishedAt)}{" "}
+                    </div>
+                    <p id="button-wrapper">
+                    <button id="save-search">Save</button>
+                    </p>
+                  </div>
                 </div>
-                <p id="button-wrapper">
-                <button id="save-search">Save</button>
-                </p>
               </div>
-            </div>
-          </div>
-        
-        );
-      })}  </section>
+            
+            );
+          })}  
+      </section>
     </div>
   );
 };
