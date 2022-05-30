@@ -77,8 +77,8 @@ const LoginForm = () => {
           >
           Login
         </button>
-        {error && <></>}
-        </form>
+        {error && ''}
+      </form>
     </div>
   );
 };
