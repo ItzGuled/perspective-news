@@ -3,7 +3,10 @@ import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  
+  const { setNewUser } = props;
+
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   // const [validated] = useState(false);
   // const [showAlert, setShowAlert] = useState(false);
@@ -52,12 +55,12 @@ const LoginForm = () => {
   };
 
 
-
   console.log(userFormData)
 
 
   return (
-    <div>
+    <div className="auth_wrapper">
+      <p>User login: </p>
       <input
         type="text"
         name="email" 
@@ -78,6 +81,11 @@ const LoginForm = () => {
         onClick={handleFormSubmit}>
         Login
       </button>
+      <button
+        type='submit'
+        onClick={() => setNewUser(true) }>
+          New User
+        </button>
     </div>
   );
 };
