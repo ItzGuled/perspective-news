@@ -7,8 +7,8 @@ import Auth from "../utils/auth";
 
 function Nav(props) {
   const { option, setOption } = props;
-  const [newUser, setNewUser] = useState(false)
-  
+  const [newUser, setNewUser] = useState(false);
+
   return (
     <div>
       <nav className="navbar">
@@ -25,20 +25,35 @@ function Nav(props) {
             </a>
           </li>
           {Auth.loggedIn() && (
-            <li>
+            <>
+              <li>
+                <a
+                  href="/saved"
+                  onClick={() => setOption("Your News")}
+                  className={
+                    option === "Your News" ? "nav-link active" : "nav-link"
+                  }
+                >
+                  Your News
+                </a>
+              </li>
+              <li>
               <a
-                href="/saved"
-                onClick={() => setOption("Your News")}
-                className={
-                  option === "Your News" ? "nav-link active" : "nav-link"
-                }
-              >
-                Your News
-              </a>
-            </li>
+                  href="/"
+                  onClick={() => Auth.logout()}
+                  className={"nav-link"}
+                >
+                  Logout
+                </a>
+              </li>
+            </>
           )}
-          {!Auth.loggedIn() && !newUser &&(<LoginForm setNewUser={setNewUser} />)}
-          {!Auth.loggedIn() && newUser && (<SignUpForm setNewUser={setNewUser} />)}
+          {!Auth.loggedIn() && !newUser && (
+            <LoginForm setNewUser={setNewUser} />
+          )}
+          {!Auth.loggedIn() && newUser && (
+            <SignUpForm setNewUser={setNewUser} />
+          )}
         </ul>
       </nav>
     </div>
