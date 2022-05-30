@@ -53,7 +53,7 @@ const LoginForm = () => {
 
 
 
-  console.log(userFormData)
+  // console.log(userFormData)
 
 
   return (
@@ -77,7 +77,7 @@ const LoginForm = () => {
           >
           Login
         </button>
-        {error && ''}
+        {error && 'Invalid credentials'}
       </form>
     </div>
   );
