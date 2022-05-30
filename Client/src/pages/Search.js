@@ -16,6 +16,7 @@ const Search = () => {
   // State objects for the news articles and search string
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [saveNews, {error}] = useMutation(SAVE_NEWS);
 
   // Gets the top headlines from the RESTful API
