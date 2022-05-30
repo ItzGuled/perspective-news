@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { searchNews, getHeadlines } from "../utils/API";
 import { format_date, timeSince } from "../utils/helpers";
 

@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import "../pages/pages.css";
+import LoginForm from './LoginForm'
 
 function Nav(props) {
   const { option, setOption } = props;
 
   return (
+    <div>
     <nav className="navbar">
       <ul>
         <li>
@@ -28,6 +30,9 @@ function Nav(props) {
         </li>
       </ul>
     </nav>
+    <LoginForm />
+    </div>
+
   );
 }
 
