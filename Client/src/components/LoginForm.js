@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
 import { useMutation } from "@apollo/react-hooks";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const LoginForm = () => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
+  // const [validated] = useState(false);
+  // const [showAlert, setShowAlert] = useState(false);
 
   // use mutation for login route
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  // const [loginUser, { error }] = useMutation(LOGIN_USER);
   
   
   const handleInputChange = (event) => {
@@ -23,28 +22,28 @@ const LoginForm = () => {
 
     event.preventDefault();
 
-    try {
+    // try {
 
-      const { data } = await loginUser({
-        variables: { ...userFormData },
-      });
+    //   const { data } = await loginUser({
+    //     variables: { ...userFormData },
+    //   });
 
-      if (error) {
-        throw new Error('something went wrong!');
-      }
+    //   if (error) {
+    //     throw new Error('something went wrong!');
+    //   }
 
-      Auth.login(data.login.token);
+    //   Auth.login(data.login.token);
 
-    } catch (err) {
-      console.error(`
-      ===========================
-      ERROR
-      ===========================
-      ${err}
-      `);
+    // } catch (err) {
+    //   console.error(`
+    //   ===========================
+    //   ERROR
+    //   ===========================
+    //   ${err}
+    //   `);
 
-      // setShowAlert(true);
-    }
+    //   // setShowAlert(true);
+    // }
 
     setUserFormData({
       username: '',
@@ -63,11 +62,13 @@ const LoginForm = () => {
         name="email" 
         placeholder="email"
         onChange={handleInputChange}
+        value={ userFormData.email }
         />
       <input
         name="password"
         placeholder="password"
         onChange={handleInputChange}
+        value={ userFormData.password }
         />
       <button
         disabled={!(userFormData.email && userFormData.password)}
