@@ -67,3 +67,7 @@ main {
   position: relative;
   /* background-color: red; */
 }
+
+.auth_wrapper {
+  display: flex;
+}
