@@ -8,12 +8,16 @@ import { searchNews, getHeadlines } from "../utils/API";
 
 import "./pages.css";
 import NewsList from "../components/NewsList";
+import { SAVE_NEWS } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 const Search = () => {
 
   // State objects for the news articles and search string
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
+  // eslint-disable-next-line no-unused-vars
+  const [saveNews, {error}] = useMutation(SAVE_NEWS);
 
   // Gets the top headlines from the RESTful API
   const topHeadlines = async (event) => {
@@ -26,7 +30,7 @@ const Search = () => {
         throw new Error("Something went wrong!");
       }
       const { articles } = await response.json();
-      console.log(articles[0].content)
+      // console.log(articles[0].content)
       updateNews(articles);
     } catch (err) {
       console.log(err);
@@ -59,6 +63,25 @@ const Search = () => {
     setSearchString("");
   };
 
+  const handleSaveNews = async (article) => {
+
+    try {
+      const { data } = await saveNews({
+        variables: { input: {...article} }
+      });
+
+      console.log(data);
+
+      if(!data) {
+        console.log("Data wasn't saved successfully");
+      }
+    }
+    catch(err) {
+      console.error(err);
+    }
+    
+  }
+
   return (
     <div id="search-div">
       <form id="search-form">
@@ -76,7 +99,7 @@ const Search = () => {
         <button onClick={topHeadlines}  type="submit">Headlines</button>
         </section>
       </form>
-      <NewsList news={news}/>      
+      <NewsList news={news} handleDeleteNews={''} handleSaveNews={handleSaveNews}/>      
     </div>
   );
 };

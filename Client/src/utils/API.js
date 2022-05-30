@@ -34,7 +34,7 @@ export const getHeadlines = (searchOptions => {
   let params;
   if (paramString.charAt(0) === '&') params = paramString.slice(1);
   else params = paramString;
-  console.log(params);
+  // console.log(params);
 
   const apiUrl = `https://newsapi.org/v2/top-headlines?${params}`
  
