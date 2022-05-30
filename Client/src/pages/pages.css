@@ -87,10 +87,10 @@
   border-radius: 2em;
 }
 
-#search-output img {
+#search-output  img {
   object-fit: cover;
-  width: 400px;
-  height: 330px;
+  width: 360px;
+  height: 310px;
 }
 p#button-wrapper {
   width: 100%;
@@ -141,6 +141,7 @@ button#save-search:hover {
 } */
 .navbar {
   padding-top: 90px;
+  
 }
 
 .navbar ul {

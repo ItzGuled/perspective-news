@@ -1,27 +1,10 @@
-// import React, { useState } from "react";
+/* eslint-disable no-unused-vars */
 import { searchNews, getHeadlines } from "../utils/API";
 import { format_date, timeSince } from "../utils/helpers";
-// import "bootstrap/dist/js/bootstrap.bundle.min";
-// import "bootstrap/dist/css/bootstrap.min.css";
+
 import "./pages.css";
 
-// const Saved = () => {
-
-//   return (
-//     <div>
-//      <h1>Your saved news will display here!</h1>
-//     </div>
-//   );
-// };
-
 import React from "react";
-// import {
-//   Jumbotron,
-//   Container,
-//   CardColumns,
-//   Card,
-//   Button,
-// } from "react-bootstrap";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 // import { getMe, deleteBook } from '../utils/API';
@@ -66,44 +49,7 @@ const SavedNews = () => {
   const savedNewsIds = userData.savedNews.map((news) => news.newsId);
   saveNewsIds(savedNewsIds);
 
-  return (
-    <>
-        <h1>Viewing saved news!</h1>
-        <h2>
-          {userData.savedNews.length
-            ? `Viewing ${userData.savedNews.length} saved ${
-                userData.savedNewss.length === 1 ? "news" : "news"
-              }:`
-            : "You have no saved news!"}
-        </h2>
-          {/* {userData.savedNews.map((news) => {
-            return (
-              <Card key={news.newsId} border="dark">
-                {news.image ? (
-                  <Card.Img
-                    src={news.image}
-                    alt={`The cover for ${news.title}`}
-                    variant="top"
-                  />
-                ) : null}
-                <Card.Body>
-                  <Card.Title>{news.title}</Card.Title>
-                  <p className="small">Author: {news.author}</p>
-                  <Card.Text>{news.description}</Card.Text>
-                  <Button
-                    className="btn-block btn-danger"
-                    onClick={() => handleDeleteNews(news.newsId)}
-                  >
-                    Delete this News Article!
-                  </Button>
-                </Card.Body>
-              </Card>
-            );
-          })} */}
-    </>
-  );
+  return <h1>Viewing saved news!</h1>;
 };
 
 export default SavedNews;
-
-// export default Saved;
