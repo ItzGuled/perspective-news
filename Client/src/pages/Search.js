@@ -4,6 +4,8 @@ import { searchNews, getHeadlines } from "../utils/API";
 import { format_date, timeSince } from "../utils/helpers";
 // import "bootstrap/dist/js/bootstrap.bundle.min";
 // import "bootstrap/dist/css/bootstrap.min.css";
+import Auth from '../utils/auth'
+
 import "./pages.css";
 
 const Search = () => {
@@ -98,6 +100,11 @@ const Search = () => {
                     </p>
                   </div>
                 </div>
+                {Auth.loggedIn() && (
+                  <p id="button-wrapper">
+                  <button id="save-search">Save</button>
+                  </p>
+                )}
               </div>
             
             );

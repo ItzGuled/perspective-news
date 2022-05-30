@@ -3,7 +3,10 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  
+  const { setNewUser } = props;
+
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
   // const [validated] = useState(false);
   // const [showAlert, setShowAlert] = useState(false);
@@ -52,33 +55,37 @@ const LoginForm = () => {
   };
 
 
-
-  // console.log(userFormData)
+  console.log(userFormData)
 
 
   return (
-    <div>
-      <form onSubmit={handleFormSubmit}>
-        <input
-          name="email" 
-          placeholder="email"
-          onChange={handleInputChange}
-          value={ userFormData.email }
-          />
-        <input
-          name="password"
-          placeholder="password"
-          onChange={handleInputChange}
-          value={ userFormData.password }
-          />
-        <button
-          disabled={!(userFormData.email && userFormData.password)}
-          type='submit'
-          >
-          Login
+    <div className="auth_wrapper">
+      <p>User login: </p>
+      <input
+        type="text"
+        name="email" 
+        placeholder="email"
+        onChange={handleInputChange}
+        value={ userFormData.email }
+        />
+      <input
+        type="text"
+        name="password"
+        placeholder="password"
+        onChange={handleInputChange}
+        value={ userFormData.password }
+        />
+      <button
+        disabled={!(userFormData.email && userFormData.password)}
+        type='submit'
+        onClick={handleFormSubmit}>
+        Login
+      </button>
+      <button
+        type='submit'
+        onClick={() => setNewUser(true) }>
+          New User
         </button>
-        {error && 'Invalid credentials'}
-      </form>
     </div>
   );
 };

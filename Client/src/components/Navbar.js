@@ -1,38 +1,62 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import "../pages/pages.css";
-import LoginForm from './LoginForm'
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignupForm";
+import Auth from "../utils/auth";
 
 function Nav(props) {
   const { option, setOption } = props;
+  const [newUser, setNewUser] = useState(false);
 
   return (
     <div>
-    <nav className="navbar">
-      <ul>
-        <li>
-          <a
-            href="#search"
-            onClick={() => setOption("Search News")}
-            className={option === "Search News" ? "nav-link active" : "nav-link"}
-          >
-            Search News
-          </a>
-        </li>
-        <li>
-          <a
-            href="#saved"
-            onClick={() => setOption("Your News")}
-            className={option === "Your News" ? "nav-link active" : "nav-link"}
-          >
-            Your News
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <LoginForm />
+      <nav className="navbar">
+        <ul>
+          <li>
+            <a
+              href="/"
+              onClick={() => setOption("Search News")}
+              className={
+                option === "Search News" ? "nav-link active" : "nav-link"
+              }
+            >
+              Search News
+            </a>
+          </li>
+          {Auth.loggedIn() && (
+            <>
+              <li>
+                <a
+                  href="/saved"
+                  onClick={() => setOption("Your News")}
+                  className={
+                    option === "Your News" ? "nav-link active" : "nav-link"
+                  }
+                >
+                  Your News
+                </a>
+              </li>
+              <li>
+              <a
+                  href="/"
+                  onClick={() => Auth.logout()}
+                  className={"nav-link"}
+                >
+                  Logout
+                </a>
+              </li>
+            </>
+          )}
+          {!Auth.loggedIn() && !newUser && (
+            <LoginForm setNewUser={setNewUser} />
+          )}
+          {!Auth.loggedIn() && newUser && (
+            <SignUpForm setNewUser={setNewUser} />
+          )}
+        </ul>
+      </nav>
     </div>
-
   );
 }
 
