@@ -87,7 +87,7 @@
   border-radius: 2em;
 }
 
-#search-output  img {
+#search-output img {
   object-fit: cover;
   width: 360px;
   height: 310px;
@@ -141,7 +141,6 @@ button#save-search:hover {
 } */
 .navbar {
   padding-top: 90px;
-  
 }
 
 .navbar ul {
@@ -164,6 +163,38 @@ button#save-search:hover {
   margin-top: 1em;
   border-style: none;
   cursor: pointer;
+}
+
+.auth_wrapper button {
+  border-radius: 0.5em;
+  padding: 0.6em;
+  margin: 1px;
+  border-style: none;
+  cursor: pointer;
+  background-image: linear-gradient(270deg, #3d44d9, #435ad9);
+  color: aquamarine;
+  transition: all 200ms linear;
+}
+
+.auth_wrapper p {
+  padding: 0.6em;
+  margin: 2px;
+  padding: 5px;
+  border-style: none;
+  cursor: pointer;
+  color: #3d44d9;
+  transition: all 200ms linear;
+}
+
+.auth_wrapper input {
+  border-radius: 0.5em;
+  padding: 0.6em;
+  margin: 2px;
+  padding: 5px;
+  border-style: none;
+  cursor: pointer;
+  color: #3d44d9;
+  transition: all 200ms linear;
 }
 
 .active {
