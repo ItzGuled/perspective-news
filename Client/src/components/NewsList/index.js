@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Auth from "../../utils/auth";
 import { format_date, timeSince } from "../../utils/helpers";
 import { SAVE_NEWS } from "../../utils/mutations";
@@ -7,30 +7,41 @@ import { useMutation } from "@apollo/client";
 const NewsList = ({ news }) => {
 
     const [saveNews] = useMutation(SAVE_NEWS);
-    const [article, setArticle] = useState('')
+    const [article, setArticle] = useState(null)
+    useEffect(() => {
 
-    const handleDeleteNews = async (event) => {
+      const data = handleSaveNews(article);
 
+    },[article])
 
-    };
-
-    const handleSaveNews = async (event) => {
-      
-        try {
-          const { data } = await saveNews({
-            variables: { input: {...article} }
-          });
+    const handleSaveNews = async (item) => {
     
-          if(!data) {
-            console.log("Data wasn't saved successfully");
-          }
-        }
-        catch(err) {
-          console.error(err);
-        }
-        
-      }
+    if(!item) return  false;
+    
+    console.log(item);
 
+    try {
+
+      // the mutation 'input' is looking for username, email and savedNews...
+      const { data } = await saveNews({
+        variables: {savedNews: item}
+      });
+
+      if(!data) {
+        console.log("Data wasn't saved successfully");
+      }
+    }
+    catch(err) {
+      console.error(err);
+    }
+        
+  }
+
+
+  const handleDeleteNews = async (event) => {
+    // placeholder
+
+  };
 
 
   return (
@@ -58,10 +69,7 @@ const NewsList = ({ news }) => {
                   <p id="button-wrapper">
                     <button
                       id="save-search"
-                      onClick={(event) => {
-                        setArticle(item)
-                        handleSaveNews(event)
-                    }}
+                      onClick={() => setArticle(item)}
                     >
                      Test
                     </button>
