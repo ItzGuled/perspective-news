@@ -9,9 +9,7 @@ import { searchNews, getHeadlines } from "../utils/API";
 import "./pages.css";
 import NewsList from "../components/NewsList";
 
-
 const Search = () => {
-
   // State objects for the news articles and search string
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
@@ -60,23 +58,26 @@ const Search = () => {
     setSearchString("");
   };
 
-  
-
   return (
     <div id="search-div">
       <form id="search-form">
-        <h2>Search for News</h2> 
+        <h2>Search for News</h2>
         <section>
-        <input
-          type="text"
-          name="searchText"
-          id="searchText"
-          value={searchString}
-          onChange={(e) => setSearchString(e.target.value)}
-          placeholder="Search Perspective..." />
+          <input
+            type="text"
+            name="searchText"
+            id="searchText"
+            value={searchString}
+            onChange={(e) => setSearchString(e.target.value)}
+            placeholder="Search Perspective..."
+          />
 
-        <button onClick={searchForNews} type="submit">Search</button>
-        <button onClick={topHeadlines}  type="submit">Headlines</button>
+          <button onClick={searchForNews} type="submit">
+            Search
+          </button>
+          <button onClick={topHeadlines} type="submit">
+            Headlines
+          </button>
         </section>
       </form>
       <h1>Search News</h1>
