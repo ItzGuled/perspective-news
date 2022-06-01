@@ -52,8 +52,12 @@ const SavedNews = () => {
 
   return (
     <div>
-    <h1>Viewing saved news!</h1>
-    <NewsList news={data.me.savedNews} handleDeleteNews={handleDeleteNews} handleSaveNews={''}/>
+      <h1>Viewing saved news!</h1>
+      <NewsList
+        news={data.me.savedNews}
+        handleDeleteNews={handleDeleteNews}
+        handleSaveNews={""}
+      />
     </div>
   );
 };

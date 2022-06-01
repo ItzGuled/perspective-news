@@ -38,7 +38,7 @@ function Nav(props) {
                 </a>
               </li>
               <li>
-              <a
+                <a
                   href="/"
                   onClick={() => Auth.logout()}
                   className={"nav-link"}
