@@ -27,13 +27,14 @@ export const ADD_USER = gql`
 `;
 
 export const SAVE_NEWS = gql`
-  mutation saveNews($input: newsInput!) {
+  mutation saveNews($input: NewsInput) {
     saveNews(input: $input) {
       _id
       username
       email
       savedNews {
-        sourceID
+        _id
+        sourceId
         sourceName
         author
         title

@@ -4,23 +4,23 @@ const newsSchema = new Schema(
     {
         sourceId: {
             type: String,
-            required: true
+            required: false
         },
         sourceName: {
             type: String,
-            required: true
+            required: false
         },
         author: {
             type: String,
-            required: true
+            required: false
         },
         title: {
             type: String,
-            required: true
+            required: false
         },
         description: {
             type: String,
-            required: true
+            required: false
         },
         url: {
             type: String            
@@ -30,11 +30,11 @@ const newsSchema = new Schema(
         },
         publishedAt: {
             type: Date,
-            required: true
+            required: false
         },
         content: {
             type: String,
-            required: true
+            required: false
         }
     }
 );
