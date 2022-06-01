@@ -16,8 +16,6 @@ const Search = () => {
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
 
-
-
   // Gets the top headlines from the RESTful API
   const topHeadlines = async (event) => {
     event.preventDefault();
@@ -81,6 +79,7 @@ const Search = () => {
         <button onClick={topHeadlines}  type="submit">Headlines</button>
         </section>
       </form>
+      <h1>Search News</h1>
       <NewsList news={news} />      
     </div>
   );

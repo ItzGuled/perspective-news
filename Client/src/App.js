@@ -5,7 +5,7 @@ import Header from "./components/header/Header";
 import Nav from "./components/Navbar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import {
   ApolloClient,
@@ -35,19 +35,9 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-
-
-
-
 function App() {
 
-  const [option, setOption] = useState("Search News");
-
-  useEffect(() => {
-    document.title = `perspective - ${option}`;
-  });
-
+  const [page, setPage] = useState('')
 
   return (
     <ApolloProvider client={client}>
@@ -55,7 +45,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <Nav option={option} setOption={setOption} />
+        <Nav />
           <Routes>
             <Route path='/' element={<Search />} />
             <Route path='/saved' element={<Saved />} />
