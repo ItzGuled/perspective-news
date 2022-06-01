@@ -54,4 +54,15 @@ function format_date(article_date) {
     return `${month}/${day}/${year}`
 }
 
-module.exports = { timeSince, format_date };
+function usersSavedNews(data) {
+  switch(data.newsCount) {
+    case 0:
+      return `${data.username} has no saved articles.`
+    case 1:
+      return `${data.username} has 1 saved article.`
+    default:
+      return `${data.username} has ${data.newsCount} saved articles.`
+  }
+}
+
+module.exports = { timeSince, format_date, usersSavedNews };
