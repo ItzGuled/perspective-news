@@ -9,9 +9,9 @@ const NewsList = ({ news }) => {
     const [saveNews] = useMutation(SAVE_NEWS);
     const [article, setArticle] = useState(null)
     useEffect(() => {
-
+        // eslint-disable-next-line no-unused-vars
         const data = handleSaveNews(article);
-
+    
     },[article])
 
     const handleSaveNews = async (item) => {
@@ -36,6 +36,7 @@ const NewsList = ({ news }) => {
     }
 
 
+    // eslint-disable-next-line no-unused-vars
     const handleDeleteNews = async (event) => {
     // placeholder
 
