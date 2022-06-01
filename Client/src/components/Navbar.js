@@ -6,9 +6,14 @@ import SignUpForm from "./SignupForm";
 import Auth from "../utils/auth";
 
 function Nav() {
-  const [pages] = useState(["Search News", "Your News"])
-  const [currentPage, setCurrentPage] = useState();
   const [newUser, setNewUser] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(localStorage.getItem('page') || "Search News")
+
+  function changePageTo(page) {
+    localStorage.setItem('page', page)
+    setCurrentPage(page)
+  }
 
   return (
     <div>
@@ -17,9 +22,9 @@ function Nav() {
           <li>
             <a
               href="/"
-              onClick={() => setCurrentPage(pages[0])}
+              onClick={() => changePageTo("Search News")}
               className={
-                currentPage === pages[0] ? "nav-link active" : "nav-link"
+                currentPage === "Search News" ? "nav-link active" : "nav-link"
               }
             >
               Search News
@@ -30,9 +35,9 @@ function Nav() {
               <li>
                 <a
                   href="/saved"
-                  onClick={() => setCurrentPage(pages[1])}
+                  onClick={() => changePageTo("Your News")}
                   className={
-                    currentPage === pages[1] ? "nav-link active" : "nav-link"
+                    currentPage === "Your News" ? "nav-link active" : "nav-link"
                   }
                 >
                   Your News
@@ -41,7 +46,10 @@ function Nav() {
               <li>
                 <a
                   href="/"
-                  onClick={() => Auth.logout()}
+                  onClick={() => {
+                    Auth.logout()
+                    changePageTo("Search News")
+                  }}
                   className={"nav-link"}
                 >
                   Logout

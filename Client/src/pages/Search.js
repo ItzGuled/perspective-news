@@ -80,7 +80,6 @@ const Search = () => {
           </button>
         </section>
       </form>
-      <h1>Search News</h1>
       <NewsList news={news} />      
     </div>
   );
