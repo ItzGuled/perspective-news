@@ -1,11 +1,10 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Nav from "./components/Navbar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import {
   ApolloClient,
@@ -36,8 +35,6 @@ const client = new ApolloClient({
 });
 
 function App() {
-
-  const [page, setPage] = useState('')
 
   return (
     <ApolloProvider client={client}>

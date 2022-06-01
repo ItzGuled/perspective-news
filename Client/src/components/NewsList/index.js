@@ -7,8 +7,12 @@ import { useMutation } from "@apollo/client";
 const NewsList = ({ news }) => {
   
   const [saveNews] = useMutation(SAVE_NEWS);
-  const [removeNews] = useMutation(REMOVE_NEWS)
+  const [removeNews] = useMutation(REMOVE_NEWS);
 
+  // Creates a store for when saving articles so the button will switch to saved
+  const [selectedArticles, addSelected] = useState([])
+
+  // Removes an article from the saved items in the users saved books array
   const removeArticle = async (itemId) => {
     try {
       const { data, error } = await removeNews({ variables: { newsId: itemId }});
@@ -20,16 +24,19 @@ const NewsList = ({ news }) => {
     }
   }
 
-  const saveArticle = async (item) => {
+  // Saves an artcile to users savedBooks array and add the index to the selected articles
+  const saveArticle = async (item, keyNumber) => {
     try {
       const { data, error } = await saveNews({ variables: { input:{...item}}});
       if (error) { console.log("Data wasn't saved successfully")};
+      addSelected([...selectedArticles, keyNumber]);
     } 
     catch (err) {
       console.error(err);
     }
   };
 
+  // Converts the api data to the same format as the data in the databse so it will be properly displayed
   const convertData = (item) => {
     
     if(!item._id) {
@@ -73,7 +80,9 @@ const NewsList = ({ news }) => {
                 <div id="item-source">{byline(data)}</div>
                 {Auth.loggedIn() && (
                   <p id="button-wrapper">
-                    {!data._id && <button id="save-search" onClick={() => saveArticle(data)}>Save</button>}
+                    {/* Determines which button to display depending on if the article is saved and which page we're on */}
+                    {!data._id && !selectedArticles.includes(i) && <button id="save-search" onClick={() => saveArticle(data, i)}>Save</button>}
+                    {!data._id && selectedArticles.includes(i) && <button id="save-search">Saved!</button>}
                     {data._id && <button id="save-search" onClick={() => removeArticle(data._id)}>Remove</button>}
                   </p>
                 )}
