@@ -51,7 +51,24 @@ function format_date(article_date) {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${month}/${day}/${year}`
+    return `${month}/${day}`
 }
 
-module.exports = { timeSince, format_date };
+function usersSavedNews(data) {
+  switch(data.newsCount) {
+    case 0:
+      return `${data.username} has no saved articles.`
+    case 1:
+      return `${data.username} has 1 saved article.`
+    default:
+      return `${data.username} has ${data.newsCount} saved articles.`
+  }
+}
+
+function byline(data) {
+  const source = data.sourceName || ''
+ if (!data.publishedAt) { return 'Byline data unavailable'}
+ if (source) { return `Source: ${source} (${timeSince(data.publishedAt)}) on ${format_date(data.publishedAt)}`}
+}
+
+module.exports = { timeSince, format_date, usersSavedNews, byline };

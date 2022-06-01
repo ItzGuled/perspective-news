@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Auth from "../../utils/auth";
-import { format_date, timeSince } from "../../utils/helpers";
+import { byline } from "../../utils/helpers";
 import { SAVE_NEWS, REMOVE_NEWS } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
@@ -70,10 +70,7 @@ const NewsList = ({ news }) => {
                   <h3 id="item-title">{data.title}</h3>
                 </a>
                 <p id="item-description">{data.description}</p>
-                <div id="item-source">
-                  { data.sourceName || ""}|{format_date(data.publishedAt)}{" "}
-                  {timeSince(data.publishedAt)}{" "}
-                </div>
+                <div id="item-source">{byline(data)}</div>
                 {Auth.loggedIn() && (
                   <p id="button-wrapper">
                     {!data._id && <button id="save-search" onClick={() => saveArticle(data)}>Save</button>}
