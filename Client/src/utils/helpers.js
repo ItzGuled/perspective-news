@@ -51,7 +51,7 @@ function format_date(article_date) {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    return `${month}/${day}/${year}`
+    return `${month}/${day}`
 }
 
 function usersSavedNews(data) {
@@ -65,4 +65,10 @@ function usersSavedNews(data) {
   }
 }
 
-module.exports = { timeSince, format_date, usersSavedNews };
+function byline(data) {
+  const source = data.sourceName || ''
+ if (!data.publishedAt) { return 'Byline data unavailable'}
+ if (source) { return `Source: ${source} (${timeSince(data.publishedAt)}) on ${format_date(data.publishedAt)}`}
+}
+
+module.exports = { timeSince, format_date, usersSavedNews, byline };
