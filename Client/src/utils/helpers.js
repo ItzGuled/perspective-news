@@ -1,11 +1,12 @@
 function timeSince(article_date) {
-  const published = new Date(article_date);
-  const now = new Date();
-  const minute = 60000;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const week = day * 7;
-  const year = week * 52;
+    
+    const published = article_date.includes('-') ? new Date(article_date) : new Date(parseInt(article_date))
+    const now = new Date();
+    const minute = 60000
+    const hour = minute * 60
+    const day = hour * 24
+    const week = day * 7
+    const year = week * 52
 
   const timeDelta = now - published;
 
@@ -46,11 +47,11 @@ function timeSince(article_date) {
 }
 
 function format_date(article_date) {
-  const date = new Date(article_date);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${month}/${day}/${year}`;
+    const date = article_date.includes('-') ? new Date(article_date) : new Date(parseInt(article_date))
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return `${month}/${day}/${year}`
 }
 
 module.exports = { timeSince, format_date };

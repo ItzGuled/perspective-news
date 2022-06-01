@@ -5,8 +5,9 @@ import LoginForm from "./LoginForm";
 import SignUpForm from "./SignupForm";
 import Auth from "../utils/auth";
 
-function Nav(props) {
-  const { option, setOption } = props;
+function Nav() {
+  const [pages] = useState(["Search News", "Your News"])
+  const [currentPage, setCurrentPage] = useState();
   const [newUser, setNewUser] = useState(false);
 
   return (
@@ -16,9 +17,9 @@ function Nav(props) {
           <li>
             <a
               href="/"
-              onClick={() => setOption("Search News")}
+              onClick={() => setCurrentPage(pages[0])}
               className={
-                option === "Search News" ? "nav-link active" : "nav-link"
+                currentPage === pages[0] ? "nav-link active" : "nav-link"
               }
             >
               Search News
@@ -29,9 +30,9 @@ function Nav(props) {
               <li>
                 <a
                   href="/saved"
-                  onClick={() => setOption("Your News")}
+                  onClick={() => setCurrentPage(pages[1])}
                   className={
-                    option === "Your News" ? "nav-link active" : "nav-link"
+                    currentPage === pages[1] ? "nav-link active" : "nav-link"
                   }
                 >
                   Your News

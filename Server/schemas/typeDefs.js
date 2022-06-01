@@ -25,30 +25,30 @@ const typeDefs = gql`
     savedNews: [News]
   }
 
-  type Auth {
-    token: ID!
-    user: User
-  }
-  input NewsInput {
-    sourceId: String
-    sourceName: String
-    author: String
-    title: String
-    description: String
-    url: String
-    image: String
-    publishedAt: String
-    content: String
-  }
-  type Query {
-    me: User
-  }
-  type Mutation {
-    login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!): Auth
-    saveNews(input: NewsInput): User
-    removeNews(_id: String!): User
-  }
+    type Auth {
+        token: ID!
+        user: User
+    }
+    input NewsInput {
+        sourceId: String
+        sourceName: String
+        author: String
+        title: String
+        description: String
+        url: String
+        image: String
+        publishedAt: String
+        content: String
+    }
+    type Query {
+        me: User
+    }
+    type Mutation {
+        login(email: String!, password: String!): Auth
+        addUser(username: String!, email: String!, password: String!): Auth
+        saveNews(input: NewsInput): User
+        removeNews(newsId: String!): User
+    }
 `;
 
 module.exports = typeDefs;

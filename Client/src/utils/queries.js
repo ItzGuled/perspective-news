@@ -9,7 +9,8 @@ export const GET_ME = gql`
       email
       newsCount
       savedNews {
-        sourceID
+        _id
+        sourceId
         sourceName
         author
         title
