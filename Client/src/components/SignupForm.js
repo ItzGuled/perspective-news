@@ -51,10 +51,6 @@ const LoginForm = (props) => {
     });
   };
 
-
-  console.log(userFormData)
-
-
   return (
     <div className="auth_wrapper">
       <p>New User: </p>
