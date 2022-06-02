@@ -25,12 +25,14 @@ const Search = () => {
     try {
       const searchOptions = {};
       const response = await getHeadlines(searchOptions);
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const { articles } = await response.json();
+      
+
+      // if (!response.ok) {
+      //   throw new Error("Something went wrong!");
+      // }
+      // const articles = await response.json();
       // console.log(articles[0].content)
-      updateNews(articles);
+      updateNews(response.data.articles);
     } catch (err) {
       console.log(err);
     }
@@ -49,12 +51,13 @@ const Search = () => {
     try {
       const searchOptions = { searchString };
       const response = await searchNews(searchOptions);
-      if (!response.ok) {
-        throw new Error("Something went wrong!");
-      }
-      const { articles } = await response.json();
-      updateNews(articles);
-      console.log(articles);
+      // if (!response.ok) {
+      //   throw new Error("Something went wrong!");
+      // }
+
+      // const { articles } = await response.json();
+      updateNews(response.data.articles);
+      console.log(response.data.articles);
     } catch (err) {
       console.log(err);
     }

@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 export const searchNews = (searchOptions => {
    
     const { searchString, newsSources, from, to, sort, numberResults} = searchOptions
@@ -13,13 +13,14 @@ export const searchNews = (searchOptions => {
     const params = `${searchString}${sources}${fromDate}${toDate}${sortBy}${pageSize}${apiKey}`
     
     const apiUrl = `https://newsapi.org/v2/everything?q=${params}&apiKey=${apiKey}`
-    return fetch(apiUrl)
+
+    return axios.get(apiUrl)
   });
   
 export const getHeadlines = (searchOptions => {
 
   const { searchString, country, from, to, sort, numberResults} = searchOptions
-   
+
   const search = searchString ? `q=${searchString}` : '';
   const fromDate = from ? `&from=${from}` : '';
   const toDate = to ? `&to${to}` : '';
@@ -37,8 +38,8 @@ export const getHeadlines = (searchOptions => {
   // console.log(params);
 
   const apiUrl = `https://newsapi.org/v2/top-headlines?${params}`
- 
-  return fetch(apiUrl)
+
+  return axios.get(apiUrl)
 
 })
   
