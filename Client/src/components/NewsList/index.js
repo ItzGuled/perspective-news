@@ -79,7 +79,7 @@ const NewsList = ({ news }) => {
                 className="headline-img"
               />
               <div id="search-items">
-                <a href={data.url}>
+                <a target="_blank" href={data.url}>
                   <h3 id="item-title">{data.title}</h3>
                 </a>
                 <div
