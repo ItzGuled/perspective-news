@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
-const LoginForm = (props) => {
+const SignUpForm = (props) => {
   const { setNewUser } = props;
   const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' });
 
@@ -31,7 +31,7 @@ const LoginForm = (props) => {
         throw new Error('something went wrong!');
       }
 
-      Auth.login(data.login.token);
+      Auth.login(data.addUser.token);
 
     } catch (err) {
       console.error(`
@@ -90,4 +90,4 @@ const LoginForm = (props) => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
