@@ -18,9 +18,9 @@ const Search = () => {
 
       //
       const response = await getHeadlines(searchOptions);
-      if (!response.ok) { throw new Error("Something went wrong!"); }
-      const { articles } = await response.json();
-      updateNews(articles);
+      // if (!response.ok) { throw new Error("Something went wrong!"); }
+      // const { articles } = await response.json();
+      updateNews(response.data.articles);
     } catch (err) { 
       console.log(err); 
     }
@@ -43,13 +43,13 @@ const Search = () => {
       const response = await searchNews(searchOptions);
 
       // if there is an issue with the response information
-      if (!response.ok) { throw new Error("Something went wrong!") };
+      // if (!response.ok) { throw new Error("Something went wrong!") };
 
       // if the response is good, then it gets the articles from the response
-      const { articles } = await response.json();
+      // const { articles } = await response.json();
 
       // puts the news articles into the useState variables
-      updateNews(articles);
+      updateNews(response.data.articles);
 
     } 
     catch (err) {
