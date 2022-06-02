@@ -55,7 +55,7 @@ export const REMOVE_NEWS = gql`
       username
       email
       savedNews {
-        sourceID
+        sourceId
         sourceName
         author
         title

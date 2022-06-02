@@ -1,5 +1,4 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Nav from "./components/Navbar";
@@ -12,20 +11,20 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-} from '@apollo/client';
+} from "@apollo/client";
 
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
+  const token = localStorage.getItem("id_token");
   return {
     headers: {
       ...headers,
-      authorization: token ? `Bearer ${token}` : '',
+      authorization: token ? `Bearer ${token}` : "",
     },
   };
 });
@@ -35,19 +34,7 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-
-
-
-
 function App() {
-
-  const [option, setOption] = useState("Search News");
-
-  useEffect(() => {
-    document.title = `perspective - ${option}`;
-  });
-
 
   return (
     <ApolloProvider client={client}>
@@ -55,7 +42,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <Nav option={option} setOption={setOption} />
+        <Nav />
           <Routes>
             <Route path='/' element={<Search />} />
             <Route path='/saved' element={<Saved />} />
@@ -70,4 +57,3 @@ function App() {
 }
 
 export default App;
-

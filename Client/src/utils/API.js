@@ -1,6 +1,6 @@
 import axios from 'axios';
 export const searchNews = (searchOptions => {
-   
+
     const { searchString, newsSources, from, to, sort, numberResults} = searchOptions
     
     const fromDate = from ? `&from=${from}` : '';
@@ -33,7 +33,7 @@ export const getHeadlines = (searchOptions => {
   
   // removes & from the starting parameter
   let params;
-  if (paramString.charAt(0) === '&') params = paramString.slice(1);
+  if (paramString.charAt(0) === "&") params = paramString.slice(1);
   else params = paramString;
   // console.log(params);
 
@@ -41,5 +41,5 @@ export const getHeadlines = (searchOptions => {
 
   return axios.get(apiUrl)
 
-})
   
+});
