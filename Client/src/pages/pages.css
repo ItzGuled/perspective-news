@@ -126,6 +126,7 @@ button#save-search:hover {
 #item-title {
   text-decoration: none;
   padding-bottom: 1em;
+  text-align: center;
 }
 
 #item-description {
