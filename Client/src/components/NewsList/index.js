@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { byline } from "../../utils/helpers";
 import { SAVE_NEWS, REMOVE_NEWS } from "../../utils/mutations";
@@ -16,6 +16,7 @@ const NewsList = ({ news }) => {
   const removeArticle = async (itemId) => {
     try {
       const { data, error } = await removeNews({ variables: { newsId: itemId }});
+      console.log(data);
       if (error) { console.log("New wasn't removed successfully")};
       window.location.reload(false)
     } 
@@ -28,6 +29,7 @@ const NewsList = ({ news }) => {
   const saveArticle = async (item, keyNumber) => {
     try {
       const { data, error } = await saveNews({ variables: { input:{...item}}});
+      console.log(data);
       if (error) { console.log("Data wasn't saved successfully")};
       addSelected([...selectedArticles, keyNumber]);
     } 
@@ -76,7 +78,7 @@ const NewsList = ({ news }) => {
                 <a href={data.url}>
                   <h3 id="item-title">{data.title}</h3>
                 </a>
-                <p id="item-description">{data.description}</p>
+                <div id="item-description" dangerouslySetInnerHTML={{ __html: `${data.description}` }} />
                 <div id="item-source">{byline(data)}</div>
                 {Auth.loggedIn() && (
                   <p id="button-wrapper">
