@@ -39,7 +39,5 @@ export const getHeadlines = (searchOptions => {
 
   const apiUrl = `https://newsapi.org/v2/top-headlines?${params}`
 
-  return axios.get(apiUrl)
-
-  
+  return axios.get(apiUrl)  
 });
