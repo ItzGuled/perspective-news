@@ -126,6 +126,10 @@ button#save-search:hover {
   height: 100px;
 }
 
+#item-description ol, #item-description ul {
+  margin-left: 40px;
+}
+
 #item-source {
   margin-top: 1em;
   color: #3d44d9;
@@ -193,6 +197,11 @@ button#save-search:hover {
   color: aquamarine;
   transition: all 200ms linear;
 }
+
+
+
+
+
 
 @media screen and (max-width: 768px) {
   #search-output {

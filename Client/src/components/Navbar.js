@@ -6,13 +6,19 @@ import SignUpForm from "./SignupForm";
 import Auth from "../utils/auth";
 
 function Nav() {
+
+  // sets whether the nav bar should display signup or login
   const [newUser, setNewUser] = useState(false);
 
-  const [currentPage, setCurrentPage] = useState(localStorage.getItem('page') || "Search News")
+  // sets local state variable to whatever is stored in the localstorage, which cause the page to re-render
+  const [currentPage, setCurrentPage] = useState(
+    localStorage.getItem("page") || "Search News"
+  );
 
+  // changes the local page in local storge and calls the useState setter
   function changePageTo(page) {
-    localStorage.setItem('page', page)
-    setCurrentPage(page)
+    localStorage.setItem("page", page);
+    setCurrentPage(page);
   }
 
   return (
@@ -47,8 +53,8 @@ function Nav() {
                 <a
                   href="/"
                   onClick={() => {
-                    Auth.logout()
-                    changePageTo("Search News")
+                    Auth.logout();
+                    changePageTo("Search News");
                   }}
                   className={"nav-link"}
                 >

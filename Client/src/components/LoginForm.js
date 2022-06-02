@@ -5,35 +5,32 @@ import Auth from "../utils/auth";
 
 const LoginForm = (props) => {
   
+  // setNewUser allows switching beween login and signup forms
   const { setNewUser } = props;
 
+  // Use state for the email and password variables
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  // const [validated] = useState(false);
-  // const [showAlert, setShowAlert] = useState(false);
 
   // use mutation for login route
   const [loginUser, { error }] = useMutation(LOGIN_USER);
   
-  
+  // when the input fields change this handles those changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
 
-
+  // makes a call to login when the use submits the login form
   const handleFormSubmit = async (event) => {
 
     event.preventDefault();
 
     try {
-
       const { data } = await loginUser({
         variables: { ...userFormData },
       });
 
-      if (error) {
-        throw new Error('something went wrong!');
-      }
+      if (error) { throw new Error('something went wrong!'); }
 
       Auth.login(data.login.token);
 
@@ -44,19 +41,14 @@ const LoginForm = (props) => {
       ===========================
       ${err}
       `);
-
-      // setShowAlert(true);
     }
 
+    // resets the login form
     setUserFormData({
       email: '',
       password: '',
     });
   };
-
-
-  console.log(userFormData)
-
 
   return (
     <div className="auth_wrapper">
