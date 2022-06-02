@@ -4,6 +4,7 @@ import Header from "./components/header/Header";
 import Nav from "./components/Navbar";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import {
@@ -14,6 +15,8 @@ import {
 } from "@apollo/client";
 
 import { setContext } from "@apollo/client/link/context";
+
+
 
 const httpLink = createHttpLink({
   uri: "/graphql",
