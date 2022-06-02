@@ -111,6 +111,13 @@ button#save-search {
   color: aquamarine;
   transition: all 200ms linear;
 }
+
+h3 {
+  color: #3d44d9;
+  padding-left: 25px;
+  text-decoration: none;
+
+}
 button#save-search:hover {
   color: #fff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -124,11 +131,14 @@ button#save-search:hover {
 #item-description {
   margin-top: 1em;
   height: 100px;
+  text-align: center;
 }
 
 #item-source {
+  padding-top: 10px;
   margin-top: 1em;
   color: #3d44d9;
+  text-align: center;
 }
 /* #search-items {
     height: 300px;

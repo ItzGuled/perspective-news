@@ -49,8 +49,9 @@ function Nav() {
                   onClick={() => {
                     Auth.logout()
                     changePageTo("Search News")
+                    
                   }}
-                  className={"nav-link"}
+                  className={"nav-link"} 
                 >
                   Logout
                 </a>
