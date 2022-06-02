@@ -48,13 +48,16 @@ function timeSince(article_date) {
 
 function format_date(article_date) {
     const date = article_date.includes('-') ? new Date(article_date) : new Date(parseInt(article_date))
-    const year = date.getFullYear();
+    // const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
     return `${month}/${day}`
 }
 
 function usersSavedNews(data) {
+
+  if(!data) { return 'No User Data...'}
+
   switch(data.newsCount) {
     case 0:
       return `${data.username} has no saved articles.`

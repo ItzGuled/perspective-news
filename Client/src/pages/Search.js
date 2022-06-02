@@ -7,6 +7,8 @@ const Search = () => {
   // State objects for the news articles and search string
   const [news, updateNews] = useState([]);
   const [searchString, setSearchString] = useState("");
+   // Creates a store for when saving articles so the button will switch to saved
+   const [selectedArticles, addSelected] = useState([]);
 
   // Gets the top headlines from the RESTful API
   const topHeadlines = async (event) => {
@@ -15,12 +17,13 @@ const Search = () => {
     try {
       // clears the search options so it can make an clear search for the top headlines 
       const searchOptions = {};
-
-      //
       const response = await getHeadlines(searchOptions);
       // if (!response.ok) { throw new Error("Something went wrong!"); }
       // const { articles } = await response.json();
       updateNews(response.data.articles);
+
+      // clears out the selected article indexes
+      addSelected([])
     } catch (err) { 
       console.log(err); 
     }
@@ -51,6 +54,9 @@ const Search = () => {
       // puts the news articles into the useState variables
       updateNews(response.data.articles);
 
+      // clears out the selected articles
+      addSelected([])
+
     } 
     catch (err) {
       console.log(err);
@@ -80,7 +86,7 @@ const Search = () => {
           </button>
         </section>
       </form>
-      <NewsList news={news} />      
+      <NewsList news={news} selectedArticles={selectedArticles} addSelected={addSelected} />      
     </div>
   );
 };

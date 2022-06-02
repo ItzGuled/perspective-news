@@ -1,15 +1,13 @@
-import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { byline } from "../../utils/helpers";
 import { SAVE_NEWS, REMOVE_NEWS } from "../../utils/mutations";
 import { useMutation } from "@apollo/client";
 
-const NewsList = ({ news }) => {
+const NewsList = ({ news, selectedArticles, addSelected }) => {
   const [saveNews] = useMutation(SAVE_NEWS);
   const [removeNews] = useMutation(REMOVE_NEWS);
 
-  // Creates a store for when saving articles so the button will switch to saved
-  const [selectedArticles, addSelected] = useState([]);
+ 
 
   // Removes an article from the saved items in the users saved books array
   const removeArticle = async (itemId) => {
@@ -79,7 +77,7 @@ const NewsList = ({ news }) => {
                 className="headline-img"
               />
               <div id="search-items">
-                <a target="_blank" href={data.url}>
+                <a target="_blank" rel="noreferrer" href={data.url}>
                   <h3 id="item-title">{data.title}</h3>
                 </a>
                 <div
