@@ -129,7 +129,8 @@ button#save-search:hover {
   text-align: center;
 }
 
-#item-description ol, #item-description ul {
+#item-description ol,
+#item-description ul {
   margin-left: 40px;
   text-align: left;
 }
@@ -201,11 +202,6 @@ button#save-search:hover {
   transition: all 200ms linear;
 }
 
-
-
-
-
-
 @media screen and (max-width: 768px) {
   #search-output {
     display: grid;
@@ -253,4 +249,22 @@ button#save-search:hover {
     width: 290px;
     height: 240px;
   }
+}
+
+@media screen and (max-width: 780px) {
+  .navbar {
+    width: 80%;
+    margin: auto;
+ 
+  }
+  input {
+    width: 90%;
+
+  }
+  button {
+    width: 50px;
+    height: 45px;
+   
+  }
+
 }

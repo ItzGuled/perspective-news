@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { searchNews, getHeadlines } from "../utils/API";
+import {ApiFunc} from "../utils/NEWAPI"
 import "./pages.css";
 import NewsList from "../components/NewsList";
 
@@ -44,7 +45,7 @@ const Search = () => {
 
       // makes a call to the API to retrieve the news articles
       const response = await searchNews(searchOptions);
-
+      console.log("response", response);
       // if there is an issue with the response information
       // if (!response.ok) { throw new Error("Something went wrong!") };
 

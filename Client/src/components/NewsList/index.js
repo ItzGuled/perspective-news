@@ -52,7 +52,7 @@ const NewsList = ({ news, selectedArticles, addSelected }) => {
         title: item.title,
         description: item.description,
         url: item.url,
-        image: item.urlToImage,
+        image: item.image,
         publishedAt: item.publishedAt,
         content: item.content,
       };
