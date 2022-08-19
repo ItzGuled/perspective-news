@@ -2,18 +2,18 @@ import axios from 'axios';
 export const searchNews = (searchOptions => {
 
     const { searchString, newsSources, from, to, sort, numberResults} = searchOptions
-    
+    console.log("searchString", searchOptions)
     const fromDate = from ? `&from=${from}` : '';
     const toDate = to ? `&to${to}` : '';
     const sortBy = sort ? `&sortBy=${sort}` : '';
-    const pageSize = numberResults || numberResults <= 100 ? `&pageSize=${numberResults}` : '&pageSize=100'
+    const pageSize = numberResults || numberResults <= 10 ? `&pageSize=${numberResults}` : '&pageSize=18'
     const sources = newsSources ? `&sources=${newsSources}` : ''
-    const apiKey = '&apiKey=58ff07ddb2ee4cbaa56658a9724bb614'
+   
 
-    const params = `${searchString}${sources}${fromDate}${toDate}${sortBy}${pageSize}${apiKey}`
+    const params = `${searchString}${sources}${fromDate}${toDate}${sortBy}${pageSize}`
     
-    const apiUrl = `https://newsapi.org/v2/everything?q=${params}&apiKey=${apiKey}`
-
+    const apiUrl = `https://gnews.io/api/v4/search?q=${params}&max=10&lang=en&country=us&token=4d43b1331880fabca105f81e9403daf2`
+console.log("line 16", apiUrl)
     return axios.get(apiUrl)
   });
   
@@ -25,11 +25,11 @@ export const getHeadlines = (searchOptions => {
   const fromDate = from ? `&from=${from}` : '';
   const toDate = to ? `&to${to}` : '';
   const sortBy = sort ? `&sortBy=${sort}` : '';
-  const pageSize = numberResults || numberResults <= 100 ? `&pageSize=${numberResults}` : '&pageSize=100'
+  const pageSize = numberResults || numberResults <= 10 ? `&pageSize=${numberResults}` : '&pageSize=10'
   const source = country ? `&country=${country}` : '&country=us'
-  const apiKey = '&apiKey=58ff07ddb2ee4cbaa56658a9724bb614'
 
-  const paramString = `${search}${source}${fromDate}${toDate}${sortBy}${pageSize}${apiKey}`
+
+  const paramString = `${search}${source}${fromDate}${toDate}${sortBy}${pageSize}`
   
   // removes & from the starting parameter
   let params;
@@ -37,7 +37,7 @@ export const getHeadlines = (searchOptions => {
   else params = paramString;
   // console.log(params);
 
-  const apiUrl = `https://newsapi.org/v2/top-headlines?${params}`
+  const apiUrl = `https://gnews.io/api/v4/top-headlines?&max=11&lang=en&country=us&token=4d43b1331880fabca105f81e9403daf2`
 
   return axios.get(apiUrl)
 

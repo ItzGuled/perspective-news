@@ -35,6 +35,7 @@ const newsSchema = new Schema({
     type: String,
     required: false,
   },
+  
 });
 
 module.exports = newsSchema;
