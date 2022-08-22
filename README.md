@@ -21,7 +21,7 @@ SO THAT I can gather a more well-rounded view of the topic
 * ![](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
 ## Link to deployed page
-https://perspective-news.herokuapp.com/
+https://perspective-news-app.herokuapp.com/
 
 ## Screenshot
 ![perspectivenewsscreenshot](https://user-images.githubusercontent.com/86737019/171741700-acd9b301-0554-44a0-87d9-06940e8bfb1b.png)
