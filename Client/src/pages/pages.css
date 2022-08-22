@@ -127,6 +127,7 @@ button#save-search:hover {
   margin-top: 1em;
   height: 100px;
   text-align: center;
+  overflow: auto;
 }
 
 #item-description ol,

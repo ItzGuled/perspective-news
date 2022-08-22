@@ -12,7 +12,7 @@ export const searchNews = (searchOptions => {
 
     const params = `${searchString}${sources}${fromDate}${toDate}${sortBy}${pageSize}`
     
-    const apiUrl = `https://gnews.io/api/v4/search?q=${params}&max=10&lang=en&country=us&token=4d43b1331880fabca105f81e9403daf2`
+    const apiUrl = `https://gnews.io/api/v4/search?q=${params}&max=9&lang=en&country=us&token=4d43b1331880fabca105f81e9403daf2`
 console.log("line 16", apiUrl)
     return axios.get(apiUrl)
   });
@@ -37,7 +37,7 @@ export const getHeadlines = (searchOptions => {
   else params = paramString;
   // console.log(params);
 
-  const apiUrl = `https://gnews.io/api/v4/top-headlines?&max=11&lang=en&country=us&token=4d43b1331880fabca105f81e9403daf2`
+  const apiUrl = `https://gnews.io/api/v4/top-headlines?&max=9&lang=en&country=us&token=4d43b1331880fabca105f81e9403daf2`
 
   return axios.get(apiUrl)
 
