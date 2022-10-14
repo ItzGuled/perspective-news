@@ -203,6 +203,14 @@ button#save-search:hover {
   transition: all 200ms linear;
 }
 
+#search-output {
+
+  background-color: #7fffd4;
+}
+footer {
+  box-shadow: 0 100vh 0 100vh #7fffd4;
+}
+
 @media screen and (max-width: 768px) {
   #search-output {
     display: grid;
@@ -239,6 +247,7 @@ button#save-search:hover {
 
   #search-form input {
     width: 100%;
+  
   }
 
   #search-form button {
@@ -246,7 +255,7 @@ button#save-search:hover {
   }
 
   #search-output img {
-    object-fit: cover;
+  
     width: 290px;
     height: 240px;
   }
@@ -258,12 +267,8 @@ button#save-search:hover {
     margin: auto;
   }
   .nav-link {
-    font-size: x-small;
+    font-size: 12.4px;
     display: inline-flex;
-  }
-
-  input {
-    width: 99%;
   }
 
   .auth_wrapper p {
@@ -275,7 +280,7 @@ button#save-search:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 20px;
+    margin-left: 70px;
   }
   button {
     font-size: x-small;
